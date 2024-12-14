@@ -27,8 +27,8 @@ jobs:
             LogLevel ERROR
             StrictHostKeyChecking no
           END
-      - name: Debug SSH_HOST
-        run: echo "$SSH_HOST"
+
+
       - name: Run deploy
         run: |
           sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" "cd /home/myproject/test_cicd/ && docker compose down && git pull && docker compose build && docker compose up -d"
