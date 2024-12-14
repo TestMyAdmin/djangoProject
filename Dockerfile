@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Копируем все файлы проекта в контейнер
 COPY . .
 
-# Открываем порт для Django приложения
+# Открываем порт для Django приложения 
 EXPOSE 8000
 
 # Запускаем сервер Django
