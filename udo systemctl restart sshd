@@ -1,0 +1,17 @@
+[0;1;32m●[0m ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (]8;;file://vm3437362.stark-industries.solutions/usr/lib/systemd/system/ssh.service/usr/lib/systemd/system/ssh.service]8;;; [0;1;38;5;185mdisabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Sat 2024-12-14 08:40:59 CET; 4s ago
+TriggeredBy: [0;1;32m●[0m ssh.socket
+       Docs: ]8;;man:sshd(8)man:sshd(8)]8;;
+             ]8;;man:sshd_config(5)man:sshd_config(5)]8;;
+    Process: 35472 ExecStartPre=/usr/sbin/sshd -t (code=exited, status=0/SUCCESS)
+   Main PID: 35474 (sshd)
+      Tasks: 1 (limit: 2276)
+     Memory: 1.2M (peak: 1.4M)
+        CPU: 33ms
+     CGroup: /system.slice/ssh.service
+             └─[0;38;5;245m35474 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"[0m
+
+Dec 14 08:40:59 vm3437362.stark-industries.solutions systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Dec 14 08:40:59 vm3437362.stark-industries.solutions sshd[35474]: Server listening on :: port 22.
+Dec 14 08:40:59 vm3437362.stark-industries.solutions systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
