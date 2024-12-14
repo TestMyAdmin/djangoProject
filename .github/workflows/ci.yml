@@ -9,26 +9,26 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Deploy to server
-      env:
+      - name: Deploy to server
+        env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PASSWORD : ${{ secrets.SSH_PASSWORD }}
-          $SSH_PRIVATE_KEY : ${{ secrets.$SSH_PRIVATE_KEY }}
-      run: |
-        mkdir -p ~/.ssh/
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        cat >>~/.ssh/id_rsa <<END
-        Host target
-          HostName $SSH_HOST
-          User $SSH_USER
-          IdentityFile ~/.ssh/id_rsa
-          LogLevel ERROR
-          StrictHostKeyChecking no
-        END
-    - name: Debug SSH_HOST
-      run: echo "$SSH_HOST"
-    - name: Run deploy
-      run: |
-        ssh target "cd /home/myproject/test_cicd/ && docker compose down && git pull && docker compose build && docker compose up -d"
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+          $SSH_PRIVATE_KEY: ${{ secrets.$SSH_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          cat >>~/.ssh/id_rsa <<END
+          Host target
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/id_rsa
+            LogLevel ERROR
+            StrictHostKeyChecking no
+          END
+      - name: Debug SSH_HOST
+        run: echo "$SSH_HOST"
+      - name: Run deploy
+        run: |
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" "cd /home/myproject/test_cicd/ && docker compose down && git pull && docker compose build && docker compose up -d"
