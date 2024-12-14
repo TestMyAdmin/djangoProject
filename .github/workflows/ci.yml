@@ -19,7 +19,7 @@ jobs:
         mkdir -p ~/.ssh/
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        cat >>~/.ssh/config <<END
+        cat >>~/.ssh/id_rsa <<END
         Host target
           HostName $SSH_HOST
           User $SSH_USER
