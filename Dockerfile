@@ -16,5 +16,6 @@ COPY . .
 # Открываем порт для Django приложения 
 EXPOSE 8000
 
+
 # Запускаем сервер Django
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
