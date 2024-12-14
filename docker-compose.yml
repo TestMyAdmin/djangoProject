@@ -1,6 +1,6 @@
 services:
   web:
-    image: python:3.9-slim
+    build: .
     container_name: src
     command: >
       sh -c "cd src
