@@ -17,4 +17,4 @@ jobs:
           SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
           $SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" "cd /home/myproject/test_cicd/ && docker compose down && git pull && docker compose build && docker compose up -d"
+          sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no "$SSH_USER@$SSH_HOST" "cd /home/myproject/test_cicd/ && docker-compose down && git pull && docker-compose build && docker-compose up -d"
