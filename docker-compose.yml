@@ -10,3 +10,9 @@ services:
       - ./:/src
     ports:
       - "8000:8000"
+    networks:
+      - test_cicd_network
+
+networks:
+  test_cicd_network:
+    driver: bridge
