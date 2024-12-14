@@ -9,7 +9,7 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Deploy to server
       env:
@@ -18,13 +18,13 @@ jobs:
           SSH_USER: ${{ secrets.SSH_USER }}
       run: |
         mkdir -p ~/.ssh/
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/github
-        chmod 600 ~/.ssh/github
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
         cat >>~/.ssh/config <<END
         Host target
           HostName $SSH_HOST
           User $SSH_USER
-          IdentityFile ~/.ssh/github
+          IdentityFile ~/.ssh/id_rsa
           LogLevel ERROR
           StrictHostKeyChecking no
         END
