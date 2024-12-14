@@ -16,5 +16,5 @@ jobs:
         pip install flake8
     - name: Test with flake8
       run: |
-        cd src
+        cd /home/myproject/test_cicd &&
         python -m flake8 --max-line-length=100
