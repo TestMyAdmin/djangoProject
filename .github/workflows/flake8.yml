@@ -18,5 +18,3 @@ jobs:
       run: |
         cd src
         python -m flake8 --max-line-length=100
-    - name: Build and run containers
-      run: cd src && docker-compose up -d --build
